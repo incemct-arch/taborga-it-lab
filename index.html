@@ -2347,6 +2347,8 @@ Mensaje: ${l.mensaje}`,R=()=>{let k=I.current;if(!k)return;k.focus(),k.select();
  /* BORRAR LA LINEA HORIZONTAL DEL HERO */
 hr { display: none !important; border: none !important; }
 div[style*="border-top"], div[style*="border-bottom"] { border: none !important; } 
+[class*="border"] { border-color: transparent !important; }
+section::after, section::before, div::after, div::before { border: none !important; background: transparent !important; }
 </style>
 <script>
   (function() {
