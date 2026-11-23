@@ -2396,8 +2396,8 @@ const buscador = setInterval(() => {
     } else { video.muted = false; video.pause(); }
     btnActivarSonido.onclick = () => { video.muted = false; video.play(); btnSonido.textContent = '🔊 Sonido'; btnActivarSonido.style.display = 'none'; };
     function alternarPlay() {
-      if (video.paused) { video.play(); btnPlay.textContent = '⏸ Pausa'; btnMovil.style.display = 'none'; }
-      else { video.pause(); btnPlay.textContent = '▶ Play'; }
+      if (video.paused) { video.play(); btnPlay.textContent = '⏸ Pausa'; btnMovil.style.setProperty('display', 'none', 'important'); }
+      else { video.pause(); btnPlay.textContent = '▶ Play'; btnMovil.style.setProperty('display', 'flex', 'important'); }
     }
     btnPlay.onclick = alternarPlay;
     btnMovil.onclick = () => { video.muted = false; alternarPlay(); };
