@@ -2355,40 +2355,35 @@ Mensaje: ${l.mensaje}`,R=()=>{let k=I.current;if(!k)return;k.focus(),k.select();
     if (!video) return;
     const esCelular = window.innerWidth <= 768;
 
-    // MOVER MONITOR DENTRO DEL CUADRO DEL TEXTO, NO DE LA SECTION
-    let intentos = 0;
-    const buscador = setInterval(() => {
-      intentos++;
-      const monitor = document.getElementById('hero-monitor-taborga');
-      if (!monitor || monitor.classList.contains('en-hero')) { if (intentos > 20) clearInterval(buscador); return; }
-      const todos = document.querySelectorAll('h1, h2, h3, div, span');
-      let titulo = null;
-      todos.forEach(t => { if (t.children.length === 0 && t.textContent.includes('Soluciones')) titulo = t; });
-      if (!titulo) titulo = document.querySelector('h1');
-      if (!titulo) return;
-      // Buscar el CUADRO que contiene el título Y el botón "Ver Servicios"
-      let cuadro = titulo.parentElement;
-      while (cuadro && !cuadro.textContent.includes('Ver Servicios')) { cuadro = cuadro.parentElement; }
-      if (!cuadro) cuadro = titulo.closest('div');
-      if (!cuadro) return;
-      cuadro.style.position = 'relative';
-      cuadro.style.overflow = 'visible';
-      monitor.style.position = 'absolute';
-      monitor.style.top = '50%';
-      monitor.style.transform = 'translateY(-50%)';
-      monitor.style.right = '3%';
-      monitor.style.left = 'auto';
-      monitor.style.width = '44%';
-      monitor.style.maxWidth = '520px';
-      monitor.style.zIndex = '10';
-      monitor.style.margin = '0';
-      monitor.style.padding = '0';
-      cuadro.appendChild(monitor);
-      monitor.classList.add('en-hero');
-      clearInterval(buscador);
-      if (intentos > 20) clearInterval(buscador);
-    }, 500);
-
+ // MOVER MONITOR ANCLADO AL TITULO - IGUAL EN CHROME Y BRAVE
+let intentos = 0;
+const buscador = setInterval(() => {
+  intentos++;
+  const monitor = document.getElementById('hero-monitor-taborga');
+  if (!monitor || monitor.classList.contains('en-hero')) { if (intentos > 20) clearInterval(buscador); return; }
+  const todos = document.querySelectorAll('h1, h2, h3, div, span');
+  let titulo = null;
+  todos.forEach(t => { if (t.children.length === 0 && t.textContent.includes('Soluciones')) titulo = t; });
+  if (!titulo) titulo = document.querySelector('h1');
+  if (!titulo) return;
+  const rect = titulo.getBoundingClientRect();
+  const topReal = window.scrollY + rect.top + 10;
+  document.body.style.position = 'relative';
+  monitor.style.position = 'absolute';
+  monitor.style.top = topReal + 'px';
+  monitor.style.right = '5%';
+  monitor.style.left = 'auto';
+  monitor.style.width = '36%';
+  monitor.style.maxWidth = '460px';
+  monitor.style.zIndex = '10';
+  monitor.style.margin = '0';
+  monitor.style.padding = '0';
+  monitor.style.transform = 'none';
+  document.body.appendChild(monitor);
+  monitor.classList.add('en-hero');
+  clearInterval(buscador);
+  if (intentos > 20) clearInterval(buscador);
+}, 500);
     if (!esCelular) {
       btnMovil.style.display = 'none';
       video.muted = true;
