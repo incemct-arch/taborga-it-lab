@@ -2329,7 +2329,7 @@ Mensaje: ${l.mensaje}`,R=()=>{let k=I.current;if(!k)return;k.focus(),k.select();
 </section>
 <style>
   #hero-monitor-taborga { width: 100%; background: transparent; }
-  .monitor-taborga { position: relative; width: 100%; margin: 0 auto; background: transparent; }
+  .monitor-taborga { position: relative; width: 100%; margin: 0 auto; background: transparent; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.55)); }
   .monitor-taborga img { width: 100%; display: block; border-radius: 12px; }
   .monitor-taborga video { position: absolute !important; top: 7% !important; left: 8% !important; width: 84% !important; height: 59% !important; object-fit: contain !important; object-position: center !important; border-radius: 6px; background: #000; }
   /* BOTONES TRANSPARENTES EN LA BASE - CON !important PARA QUE SI SE VEAN */
@@ -2367,14 +2367,14 @@ const buscador = setInterval(() => {
   if (!titulo) titulo = document.querySelector('h1');
   if (!titulo) return;
   const rect = titulo.getBoundingClientRect();
-  const topReal = window.scrollY + rect.top + 10;
+  const topReal = window.scrollY + rect.top + 70;
   document.body.style.position = 'relative';
   monitor.style.position = 'absolute';
   monitor.style.top = topReal + 'px';
-  monitor.style.right = '9%';
+  monitor.style.right = '7%';
   monitor.style.left = 'auto';
-  monitor.style.width = '33%';
-  monitor.style.maxWidth = '430px';
+  monitor.style.width = '38%';
+  monitor.style.maxWidth = '480px';
   monitor.style.zIndex = '10';
   monitor.style.margin = '0';
   monitor.style.padding = '0';
